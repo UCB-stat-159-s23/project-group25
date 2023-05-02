@@ -3,3 +3,5 @@ root: notebooks/main
 chapters:
 - file: notebooks/EDA
 - file: project-description
+- file: contribution_statement
+
