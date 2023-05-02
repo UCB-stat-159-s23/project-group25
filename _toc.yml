@@ -1,0 +1,5 @@
+format: jb-book
+root: notebooks/main
+chapters:
+- file: notebooks/EDA
+- file: project-description
