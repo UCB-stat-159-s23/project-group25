@@ -435,9 +435,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#datasets</span>
-<span class="n">diabetes_012_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_012_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
-<span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -448,55 +446,11 @@ document.write(`
 </section>
 <section id="ols-regression">
 <h2>OLS Regression<a class="headerlink" href="#ols-regression" title="Permalink to this heading">#</a></h2>
-<p>Both datasets contain the same columns except for their respective first columns (Diabetes_012 and Diabetes_binary). We did OLS regression on the first columns using the 7 numeric features to determine which features would be a valid in modeling the factors that affect diabetes.</p>
+<p>We did OLS regression on the first columns using the 7 numeric features (BMI, Income, Education, Age, General Health, Mental Health, Physical Health) to determine which features would be a valid in modeling the factors that affect diabetes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Diabetes_012 ~  BMI + Income + Education + Age + GenHlth + MentHlth + PhysHlth&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_012_dataset</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Diabetes_binary ~  BMI + Income + Education + Age + GenHlth + MentHlth + PhysHlth&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:           Diabetes_012   R-squared:                       0.142
-Model:                            OLS   Adj. R-squared:                  0.142
-Method:                 Least Squares   F-statistic:                     6016.
-Date:                Fri, 28 Apr 2023   Prob (F-statistic):               0.00
-Time:                        21:32:07   Log-Likelihood:            -2.4933e+05
-No. Observations:              253680   AIC:                         4.987e+05
-Df Residuals:                  253672   BIC:                         4.988e+05
-Df Model:                           7                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept     -0.6914      0.011    -62.662      0.000      -0.713      -0.670
-BMI            0.0182      0.000     90.410      0.000       0.018       0.019
-Income        -0.0162      0.001    -22.187      0.000      -0.018      -0.015
-Education     -0.0100      0.001     -6.751      0.000      -0.013      -0.007
-Age            0.0341      0.000     78.507      0.000       0.033       0.035
-GenHlth        0.1370      0.002     89.404      0.000       0.134       0.140
-MentHlth      -0.0008      0.000     -4.397      0.000      -0.001      -0.000
-PhysHlth       0.0015      0.000      8.427      0.000       0.001       0.002
-==============================================================================
-Omnibus:                    62290.965   Durbin-Watson:                   1.987
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           121499.605
-Skew:                           1.535   Prob(JB):                         0.00
-Kurtosis:                       4.437   Cond. No.                         274.
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model2</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Diabetes_binary ~  BMI + Income + Education + Age + GenHlth + MentHlth + PhysHlth&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -507,8 +461,8 @@ Notes:
 Dep. Variable:        Diabetes_binary   R-squared:                       0.133
 Model:                            OLS   Adj. R-squared:                  0.133
 Method:                 Least Squares   F-statistic:                     5554.
-Date:                Fri, 28 Apr 2023   Prob (F-statistic):               0.00
-Time:                        21:32:07   Log-Likelihood:                -72849.
+Date:                Wed, 03 May 2023   Prob (F-statistic):               0.00
+Time:                        18:17:50   Log-Likelihood:                -72849.
 No. Observations:              253680   AIC:                         1.457e+05
 Df Residuals:                  253672   BIC:                         1.458e+05
 Df Model:                           7                                         
