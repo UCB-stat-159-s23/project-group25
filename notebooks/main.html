@@ -615,7 +615,7 @@ Dep. Variable:        Diabetes_binary   R-squared:                       0.133
 Model:                            OLS   Adj. R-squared:                  0.133
 Method:                 Least Squares   F-statistic:                     5554.
 Date:                Thu, 04 May 2023   Prob (F-statistic):               0.00
-Time:                        05:43:50   Log-Likelihood:                -72849.
+Time:                        19:34:46   Log-Likelihood:                -72849.
 No. Observations:              253680   AIC:                         1.457e+05
 Df Residuals:                  253672   BIC:                         1.458e+05
 Df Model:                           7                                         
@@ -652,20 +652,63 @@ Notes:
 <p>The negative coefficients of income and education indicate that with higher income and better/more years of education, there’s less likelihood that one will develop diabetes. More income likely allows easier access to better food and better medical help.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;income&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;education&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Income and Education&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency/Number of people&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54cade92e6d5d44dfe16973bb9ed2d30c0cd325fac5e004cde5f4d369432c758.png" src="../_images/54cade92e6d5d44dfe16973bb9ed2d30c0cd325fac5e004cde5f4d369432c758.png" />
+<img alt="../_images/bdae8f6b5f6c5c0fb24293b30fa4ade742c6ba0be7f9c7e5710a990f2feaeda0.png" src="../_images/bdae8f6b5f6c5c0fb24293b30fa4ade742c6ba0be7f9c7e5710a990f2feaeda0.png" />
 </div>
 </div>
-<p>Looking at this histogram, the income are generally distributed towards the higher end which indicates that the dataset is sampling from a higher income class. Higher income generally leads to access to higher education with more resources to afford tutors, private schools, etc.</p>
+<p>Looking at this histogram, the income are generally distributed towards the higher end which indicates that the dataset is sampling from a higher income class. Higher income generally leads to access to higher education with more resources to afford tutors, private schools, etc. These two variables may be correlated with each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;BMI&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;BMI&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency/Number of people&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;BMI&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/869d8371d60066c2c8a526294b880a07a571eefe13dc7212bb05bb8af3e1a43d.png" src="../_images/869d8371d60066c2c8a526294b880a07a571eefe13dc7212bb05bb8af3e1a43d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    253680.000000
+mean         28.382364
+std           6.608694
+min          12.000000
+25%          24.000000
+50%          27.000000
+75%          31.000000
+max          98.000000
+Name: BMI, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>BMI is generally classified into five categories: <br/> <br/>
+Under 18.5 – This is described as underweight. <br/>
+Between 18.5 and 24.9 – This is described as the ‘healthy range’.<br/>
+Between 25 and 29.9 – This is described as overweight<br/>
+Between 30 and 39.9 – This is described as obesity<br/>
+40 or over – This is described as severe obesity<br/></p>
+<p>Looking at the BMI column, the data is centered around 27 and most people are on average around 28 on the BMI scale. 50% of the data is between 24 and 31 BMI, indicating that people in this range are classified as mostly overweight with a few in ‘healthy’ and ‘obsese’ range.</p>
 </section>
 <section id="model-comparison">
 <h2>Model Comparison<a class="headerlink" href="#model-comparison" title="Permalink to this heading">#</a></h2>
