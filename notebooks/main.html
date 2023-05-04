@@ -421,6 +421,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span> 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
@@ -435,7 +436,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#read data set csv</span>
+<span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -446,6 +448,157 @@ document.write(`
 </section>
 <section id="ols-regression">
 <h2>OLS Regression<a class="headerlink" href="#ols-regression" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#7 numeric features dataframe</span>
+<span class="n">diabetes_binary_dataset</span><span class="p">[[</span><span class="s1">&#39;BMI&#39;</span> <span class="p">,</span> <span class="s1">&#39;Income&#39;</span> <span class="p">,</span> <span class="s1">&#39;Education&#39;</span> <span class="p">,</span> <span class="s1">&#39;Age&#39;</span> <span class="p">,</span> <span class="s1">&#39;GenHlth&#39;</span> <span class="p">,</span> <span class="s1">&#39;MentHlth&#39;</span> <span class="p">,</span> <span class="s1">&#39;PhysHlth&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BMI</th>
+      <th>Income</th>
+      <th>Education</th>
+      <th>Age</th>
+      <th>GenHlth</th>
+      <th>MentHlth</th>
+      <th>PhysHlth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>40.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>18.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>11.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>11.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>253675</th>
+      <td>45.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>253676</th>
+      <td>18.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>253677</th>
+      <td>28.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>253678</th>
+      <td>23.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>253679</th>
+      <td>25.0</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>9.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>253680 rows × 7 columns</p>
+</div></div></div>
+</div>
 <p>We did OLS regression on the first columns using the 7 numeric features (BMI, Income, Education, Age, General Health, Mental Health, Physical Health) to determine which features would be a valid in modeling the factors that affect diabetes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -461,8 +614,8 @@ document.write(`
 Dep. Variable:        Diabetes_binary   R-squared:                       0.133
 Model:                            OLS   Adj. R-squared:                  0.133
 Method:                 Least Squares   F-statistic:                     5554.
-Date:                Wed, 03 May 2023   Prob (F-statistic):               0.00
-Time:                        18:17:50   Log-Likelihood:                -72849.
+Date:                Thu, 04 May 2023   Prob (F-statistic):               0.00
+Time:                        05:43:50   Log-Likelihood:                -72849.
 No. Observations:              253680   AIC:                         1.457e+05
 Df Residuals:                  253672   BIC:                         1.458e+05
 Df Model:                           7                                         
@@ -491,11 +644,28 @@ Notes:
 </div>
 </div>
 </div>
-<p>Given that dependent variable Diabetes_binary is binary (0 = no diabete, 1 = diabetes), positive coefficients indicate higher likeliness to have diabetes while negative coefficient has lower likeliness to develop diabetes.</p>
-<p>The f-statistic is 5554 and greater than 10, indicating that it’s a strong model and has significant explanatory power.</p>
+<p>Given that dependent variable Diabetes_binary is binary (0 = no diabetes, 1 = diabetes), positive coefficients indicate higher likeliness to have diabetes while negative coefficient has lower likeliness to develop diabetes.</p>
+<p>The f-statistic is 5554 and greater than 10, indicating that it’s a strong model and has significant explanatory power. Thed F-value is greater than the critical value, we can reject the null hypothesis. The omnibus is 68880 which also indicates that there’s a significant overall relationship between the predictors and variable of interest.</p>
+<p>The r-squared is 0.133 which indicates that the model is better at fitting the data than a horizontal line.</p>
 <p>The p-values of the intercept is 0 which indicate that the data is statistically significant at the 1% level (and 5% level). This means that we reject the null hypothesis for a significance test at 1% and we can be 99% confident that the independent variables has a significant effect on Diabetes_binary.</p>
-<p>The positive coefficients of BMI, age, general health indicate that as these numbers increase, the chances of getting diabetes also increases. This reasonable since older, more overweight (higher BMI), and people who rate their health poorly will have worser health than those who are fit and younger.</p>
+<p>The positive coefficients of BMI, age, general health indicate that as these numbers increase, the chances of getting diabetes also increases. This reasonable since older, more overweight (higher BMI), and people who rate their health poorly will have worse health than those who are fit and younger.</p>
 <p>The negative coefficients of income and education indicate that with higher income and better/more years of education, there’s less likelihood that one will develop diabetes. More income likely allows easier access to better food and better medical help.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/54cade92e6d5d44dfe16973bb9ed2d30c0cd325fac5e004cde5f4d369432c758.png" src="../_images/54cade92e6d5d44dfe16973bb9ed2d30c0cd325fac5e004cde5f4d369432c758.png" />
+</div>
+</div>
+<p>Looking at this histogram, the income are generally distributed towards the higher end which indicates that the dataset is sampling from a higher income class. Higher income generally leads to access to higher education with more resources to afford tutors, private schools, etc.</p>
 </section>
 <section id="model-comparison">
 <h2>Model Comparison<a class="headerlink" href="#model-comparison" title="Permalink to this heading">#</a></h2>
