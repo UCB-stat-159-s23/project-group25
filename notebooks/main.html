@@ -402,6 +402,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor-knn">4. K Nearest Neighbor (KNN)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">Model Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-duplicates">Drop Duplicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balance-data">Balance Data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#author-contributions-statement">Author Contributions Statement</a><ul class="visible nav section-nav flex-column">
@@ -747,6 +752,7 @@ Between 30 and 39.9 – This is described as obesity<br/>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">rf_model1</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">criterion</span> <span class="o">=</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
 <span class="n">rf_model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
 <span class="n">rf_model1_pred</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -757,7 +763,7 @@ Between 30 and 39.9 – This is described as obesity<br/>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model accuracy evaluation</span>
 <span class="n">rf_model1_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span>
 <span class="n">rf_model1_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;testing accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -906,6 +912,162 @@ Between 30 and 39.9 – This is described as obesity<br/>
 </div>
 </div>
 </div>
+<p>From comparing the four models above, we can see that the KNN method generated a very low accuracy compared to other three classification models. It only achieved an accuracy of 0.837 in on the test set. The other three models have similar accuracies. We can see that those three models all give an accuracy of around 0.86, while the random forest model achieved an accuracy of 0.866. Since this model gave the highest accuracy, we decide to further investigate the random forest model and try to optimize the accuracy of the random forest model.</p>
+</section>
+</section>
+<section id="model-optimization">
+<h2>Model Optimization<a class="headerlink" href="#model-optimization" title="Permalink to this heading">#</a></h2>
+<section id="drop-duplicates">
+<h3>Drop Duplicates<a class="headerlink" href="#drop-duplicates" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training preparation and train-test split</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model training and prediction</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rf_model1</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">criterion</span> <span class="o">=</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+<span class="n">rf_model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rf_model1_pred</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model accuracy evaluation</span>
+<span class="n">rf_model1_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span>
+<span class="n">rf_model1_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accuracy: 0.8535134546246868, rmse: 0.3827356076658053
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems that dropping duplicates did not increase training accuracy. This is probably caused by overfitting. To determine if there is an overfitting, let’s display both the training accuracy and testing accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Overfitting</span>
+<span class="n">rf_model1_pred_train</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">rf_model1_accuracy_train</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">rf_model1_pred_train</span><span class="p">)</span>
+<span class="n">rf_model1_rmse_train</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">rf_model1_pred_train</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">rf_model1_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span>
+<span class="n">rf_model1_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;training accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy_train</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse_train</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;testing accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>training accuracy: 0.9110846011798736, rmse: 0.2981868521919209
+testing accuracy: 0.8535134546246868, rmse: 0.3827356076658053
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the training accuracy is much higher than the testing accuracy, we confirm the existence of overfitting. Let’s try reduce overfitting by modifying the stopping criterion of the decision trees incorporated in the random forest model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_model1</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">criterion</span> <span class="o">=</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+<span class="n">rf_model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rf_model1_pred</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rf_model1_pred_train</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">rf_model1_accuracy_train</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">rf_model1_pred_train</span><span class="p">)</span>
+<span class="n">rf_model1_rmse_train</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">rf_model1_pred_train</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">rf_model1_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span>
+<span class="n">rf_model1_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;training accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy_train</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse_train</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;testing accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>training accuracy: 0.8738145430577572, rmse: 0.35522592380377144
+testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that although the overfitting problem is solved, the testing accuracy seemed to improve only by a little. Therefore, dropping duplicated records may not be a good idea to improve testing accuracy. This is reasonable because the duplicated data appeared in the original dataset was not manually added by mistake. Instead, if duplicated data appeared, it means this specific “pattern of data” just appear more frequently than other records in the dataset. We can just return to our original dataset and try another way of optimizing the model.</p>
+</section>
+<section id="balance-data">
+<h3>Balance Data<a class="headerlink" href="#balance-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
+<span class="c1"># over sampling of the dataset to get a balanced dataset</span>
+<span class="n">class_0</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">class_1</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># over sampling of the minority class 1</span>
+<span class="n">class_1_over</span> <span class="o">=</span> <span class="n">class_1</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_0</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Creating a new dataframe with over sampled class 1 df and class 0 df</span>
+<span class="n">diabetes_binary_dataset_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">class_1_over</span><span class="p">,</span> <span class="n">class_0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset_new</span><span class="p">[</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model training and prediction</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rf_model1</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">criterion</span> <span class="o">=</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+<span class="n">rf_model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rf_model1_pred</span> <span class="o">=</span> <span class="n">rf_model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model accuracy evaluation</span>
+<span class="n">rf_model1_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span>
+<span class="n">rf_model1_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_model1_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;accuracy: </span><span class="si">{</span><span class="n">rf_model1_accuracy</span><span class="si">}</span><span class="s1">, rmse: </span><span class="si">{</span><span class="n">rf_model1_rmse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accuracy: 0.9129663132342501, rmse: 0.29501472296437997
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the accuracy now becomes 0.913, which brings a significant progress from our previous random forest model. Balancing the data creates a significant improvement because our original data is very unbalanced, which means our original model was taking unbalanced weights across the binary diabetes status. Since balanced data is a required component to make a good random forest model, balancing the original dataset created a vast improvement in testing accuracy.</p>
 </section>
 </section>
 </section>
@@ -914,7 +1076,7 @@ Between 30 and 39.9 – This is described as obesity<br/>
 <section id="bruce">
 <h2>Bruce:<a class="headerlink" href="#bruce" title="Permalink to this heading">#</a></h2>
 <p>I completed EDA for the binary diabetes dataset. I did some data cleaning work, dropped duplicated data, and created several visualizations to help the audience get a better understanding of the dataset.
-I worked on the section of generating different classification models on the binary dataset.</p>
+I worked on the section of generating different classification models on the binary dataset. I compared their accuracies and conducted optimization on the random forest model.</p>
 </section>
 <section id="duy">
 <h2>Duy:<a class="headerlink" href="#duy" title="Permalink to this heading">#</a></h2>
@@ -1001,6 +1163,11 @@ Create Make Commands.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">2. Logistic Regression</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">3. Decision Tree</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor-knn">4. K Nearest Neighbor (KNN)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">Model Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-duplicates">Drop Duplicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balance-data">Balance Data</a></li>
 </ul>
 </li>
 </ul>

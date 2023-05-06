@@ -393,15 +393,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-1-diabetes-binary-dataset">Exploration #1: diabetes_binary dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-column-diabetes-binary">Explore Column: Diabetes_binary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-correlations-between-variables">Explore correlations between variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth">Explore the Distribution of Diabetes with respect to GenHlth</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-2-diabetes-012-dataset">Exploration #2: diabetes_012_dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-column-diabetes-binary">Explore Column: Diabetes_binary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-correlations-between-variables">Explore correlations between variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth">Explore the Distribution of Diabetes with respect to GenHlth</a></li>
 </ul>
             </nav>
         </div>
@@ -442,325 +438,6 @@ document.write(`
 </section>
 <section id="dataset-description">
 <h2>Dataset Description<a class="headerlink" href="#dataset-description" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Three-class diabetes dataset</span>
-<span class="n">diabetes_012_dataset</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Diabetes_012</th>
-      <th>HighBP</th>
-      <th>HighChol</th>
-      <th>CholCheck</th>
-      <th>BMI</th>
-      <th>Smoker</th>
-      <th>Stroke</th>
-      <th>HeartDiseaseorAttack</th>
-      <th>PhysActivity</th>
-      <th>Fruits</th>
-      <th>...</th>
-      <th>AnyHealthcare</th>
-      <th>NoDocbcCost</th>
-      <th>GenHlth</th>
-      <th>MentHlth</th>
-      <th>PhysHlth</th>
-      <th>DiffWalk</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>Education</th>
-      <th>Income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>40.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>5.0</td>
-      <td>18.0</td>
-      <td>15.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>9.0</td>
-      <td>4.0</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>25.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>7.0</td>
-      <td>6.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>28.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>5.0</td>
-      <td>30.0</td>
-      <td>30.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>9.0</td>
-      <td>4.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>27.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>11.0</td>
-      <td>3.0</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>24.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>11.0</td>
-      <td>5.0</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>253675</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>45.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>5.0</td>
-      <td>6.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>253676</th>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>18.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>11.0</td>
-      <td>2.0</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>253677</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>28.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>5.0</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>253678</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>7.0</td>
-      <td>5.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>253679</th>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>25.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>9.0</td>
-      <td>6.0</td>
-      <td>2.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>253680 rows × 22 columns</p>
-</div></div></div>
-</div>
 <p>In this dataset, there are 22 columns in total: 7 numeric columns, 14 binary columns (dummy), and the dependent column of interest (Diabetes_012). <br/><br/></p>
 <p>‘Diabetes_012’:  indicates that 0 is for no diabetes or only during pregnancy, 1 is for prediabetes, and 2 is for diabetes. <br/>
 ‘HighBP’: indicates that 0 is for low blood pressure, 1 is for high blood pressure <br/>
@@ -1105,10 +782,8 @@ document.write(`
 </div>
 <p>In this dataset, column Diabetes_binary indicates that 0 is for no diabetes and 1 is for diabetes. </br> The columns are the same as the previous dataset.</p>
 </section>
-<section id="exploration-1-diabetes-binary-dataset">
-<h2>Exploration #1: diabetes_binary dataset<a class="headerlink" href="#exploration-1-diabetes-binary-dataset" title="Permalink to this heading">#</a></h2>
 <section id="dataset-overview">
-<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Permalink to this heading">#</a></h3>
+<h2>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overview of features</span>
@@ -1435,7 +1110,7 @@ memory usage: 42.6 MB
 </div>
 </section>
 <section id="data-cleaning">
-<h3>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this heading">#</a></h3>
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check missing values</span>
@@ -1494,7 +1169,7 @@ dtype: int64
 </div>
 </section>
 <section id="explore-column-diabetes-binary">
-<h3>Explore Column: Diabetes_binary<a class="headerlink" href="#explore-column-diabetes-binary" title="Permalink to this heading">#</a></h3>
+<h2>Explore Column: Diabetes_binary<a class="headerlink" href="#explore-column-diabetes-binary" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Barplot to show proportion of people with Diabetes vs. without Diabetes</span>
@@ -1525,7 +1200,7 @@ dtype: int64
 </div>
 </section>
 <section id="explore-correlations-between-variables">
-<h3>Explore correlations between variables<a class="headerlink" href="#explore-correlations-between-variables" title="Permalink to this heading">#</a></h3>
+<h2>Explore correlations between variables<a class="headerlink" href="#explore-correlations-between-variables" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Colormap to show the pairwise correlation between features</span>
@@ -1543,7 +1218,7 @@ dtype: int64
 <p>GenHlth seems to be the feature that has the highest correlation coefficient with Diabetes_binary, so let’s further investigate the relationship between them.</p>
 </section>
 <section id="explore-the-distribution-of-diabetes-with-respect-to-genhlth">
-<h3>Explore the Distribution of Diabetes with respect to GenHlth<a class="headerlink" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth" title="Permalink to this heading">#</a></h3>
+<h2>Explore the Distribution of Diabetes with respect to GenHlth<a class="headerlink" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Barplot to show proportion of people with Diabetes vs. without Diabetes with respect to GenHlth</span>
@@ -1558,10 +1233,6 @@ dtype: int64
 </div>
 </div>
 <p>This visualization clearly shows that Diebetes happens more often when people’s general health condition is worse.</p>
-</section>
-</section>
-<section id="exploration-2-diabetes-012-dataset">
-<h2>Exploration #2: diabetes_012_dataset<a class="headerlink" href="#exploration-2-diabetes-012-dataset" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1635,15 +1306,11 @@ dtype: int64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-1-diabetes-binary-dataset">Exploration #1: diabetes_binary dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-column-diabetes-binary">Explore Column: Diabetes_binary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-correlations-between-variables">Explore correlations between variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth">Explore the Distribution of Diabetes with respect to GenHlth</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-2-diabetes-012-dataset">Exploration #2: diabetes_012_dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-column-diabetes-binary">Explore Column: Diabetes_binary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-correlations-between-variables">Explore correlations between variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-distribution-of-diabetes-with-respect-to-genhlth">Explore the Distribution of Diabetes with respect to GenHlth</a></li>
 </ul>
   </nav></div>
 
