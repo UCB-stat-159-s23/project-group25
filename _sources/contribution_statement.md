@@ -12,3 +12,4 @@ I made our work visable by publishing it online as a jupyterbook, with the help 
 Create Make Commands. 
 
 ### Donghoon Shin: 
+I made our codebase reproducible by making environment.yml with makefile that creates conda environment and ipykernal. Also, I added scientific analysis of which features predict diabetes with logistic regression analysis.
