@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Diabetes Prediection Project</title>
+    <title>Predicting Diabetes &#8212; Diabetes Prediection Project</title>
   
   
   
@@ -347,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Predicting Diabetes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -356,9 +356,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile-commands">Makefile Commands</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -369,9 +372,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p><a class="reference external" href="https://classroom.github.com/a/LiaEl886"><img alt="Review Assignment Due Date" src="https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg" /></a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-diabetes">
+<h1>Predicting Diabetes<a class="headerlink" href="#predicting-diabetes" title="Permalink to this heading">#</a></h1>
+<p>[<img alt="Binder" src="https://mybinder.org" /></p>
 <p>All the content in this repository is available as a static website <a class="reference external" href="https://ucb-stat-159-s23.github.io/project-group25/">here</a></p>
 <p>Authors: Sam Tan, Bruce Xu, Duy Anh, Donghoon Shin</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This project aims to understand the predictive factors for becoming diabadic. The raw dataset can be downloaded here from<a class="reference external" href="https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset">Kaggle</a></p>
+<p>We compared the performance of different models to predict if a person developed diabetes. Specifically, we compared the performance of OLS,  Decision Tree, Random Forest Classification and K Nearest Neighbor (KNN) model, and we found that the Random Forest model has the highest accuracy, 0.866. The KNN model generated a very low accuracy compared to other three classification models. However, It only achieved an accuracy of 0.837 in on the test set.</p>
+<p>Since the Random Forest model gave the highest accuracy, we decide to further investigate the random forest model and try to optimize the accuracy of the random forest model. We attemped dropping duplicated records, but it didn’t improve testing accuracy. This is reasonable because the duplicated data appeared in the original dataset was not manually added by mistake. Instead, if duplicated data appeared, it means this specific “pattern of data” just appear more frequently than other records in the dataset. We can just return to our original dataset and try another way of optimizing the model.</p>
+<p>TODO: explain the “balance” and “Analysis of weights to get intuition” section.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">env</span></code> to setup the conda environment and install the required dependencies. Use <code class="docutils literal notranslate"><span class="pre">project-group25</span></code> kernel to execute the Jupyter Notebook.</p>
+</section>
+<section id="repository-structure">
+<h2>Repository Structure<a class="headerlink" href="#repository-structure" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/</span></code> contains different datasets in csv formats</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_012_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_5050split_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean.csv</span></code> is the cleaned version of <code class="docutils literal notranslate"><span class="pre">raw_data.csv</span></code> (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train.csv</span></code> is the training dataset (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">val.csv</span></code> is the validation dataset (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test.csv</span></code> is the testing dataset (TODO)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">figures/</span></code> contains generated figures from running the notebooks in <code class="docutils literal notranslate"><span class="pre">codes/</span></code> (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">codes/</span></code> contains the jupyter notebooks for data analysis</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> summarizes and discusses the findings and outcomes of our analysis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cleaning.ipynb</span></code> prepares the data for later analysis (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDA.ipynb</span></code> conducts data visualization</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> required for JupyterBook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> required for JupyterBook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> is the table of contents for JupyterBook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">environment-jupyterbook.txt</span></code> packages for the book build in Github Actions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> is the conda environment for this repo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code> make commands for easy execution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> contains the license used by the repo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code> current document</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw07-description.ipynb</span></code> Stat 159 assignment desctiption</p></li>
+</ul>
+</section>
+<section id="makefile-commands">
+<h2>Makefile Commands<a class="headerlink" href="#makefile-commands" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">make</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">env</span></code> creates and configures the environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove-env</span></code> remove the environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update-env</span></code> update the environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code> build the JupyterBook normally</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html-hub</span></code> build the JupyterBook so that you can view it on the hub with the URL proxy trick: <a class="reference external" href="https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html">https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code> clean up the generated figures, data, and _build folders.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code> run all the notebooks (<code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> in <code class="docutils literal notranslate"><span class="pre">codes/</span></code> and <code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code>)</p></li>
+</ul>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -421,9 +484,12 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile-commands">Makefile Commands</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
