@@ -386,7 +386,7 @@ All the content in this repository is available as a static website <a class="re
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">env</span></code> to setup the conda environment and install the required dependencies. Use <code class="docutils literal notranslate"><span class="pre">project-group25</span></code> kernel to execute the Jupyter Notebook.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">env</span></code> to setup the conda environment and install the required dependencies. Use <code class="docutils literal notranslate"><span class="pre">diabetes-analysis</span></code> kernel to execute the Jupyter Notebook.</p>
 </section>
 <section id="repository-structure">
 <h2>Repository Structure<a class="headerlink" href="#repository-structure" title="Permalink to this heading">#</a></h2>
@@ -408,6 +408,17 @@ All the content in this repository is available as a static website <a class="re
 <li><p><code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> summarizes and discusses the findings and outcomes of our analysis</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cleaning.ipynb</span></code> prepares the data for later analysis (TODO)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EDA.ipynb</span></code> conducts data visualization</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_analysis_pkg</span></code> contains the package, which has all the tailor-made functions for this project</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_analysis_tools</span></code> is the name of the package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">functions.py</span></code> contains the functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests/</span></code> is the folder for the tests for the functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests_functions.py</span></code> for testing the function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> required to create python package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproj.tml</span></code> required to create python package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> required to create python package</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> required for JupyterBook</p></li>

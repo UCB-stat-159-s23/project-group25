@@ -18,7 +18,7 @@ TODO: explain the "balance" and "Analysis of weights to get intuition" section.
 
 ## Installation
 
-Run `make env` to setup the conda environment and install the required dependencies. Use `project-group25` kernel to execute the Jupyter Notebook. 
+Run `make env` to setup the conda environment and install the required dependencies. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
 
 ## Repository Structure
 
@@ -35,7 +35,14 @@ Run `make env` to setup the conda environment and install the required dependenc
   - `main.ipynb` summarizes and discusses the findings and outcomes of our analysis
   - `cleaning.ipynb` prepares the data for later analysis (TODO)
   - `EDA.ipynb` conducts data visualization 
-
+- `diabetes_analysis_pkg` contains the package, which has all the tailor-made functions for this project
+  - `diabetes_analysis_tools` is the name of the package
+   -  `functions.py` contains the functions
+    - `tests/` is the folder for the tests for the functions
+     -  `tests_functions.py` for testing the function
+  - `setup.py` required to create python package
+  - `pyproj.tml` required to create python package
+  - `setup.cfg` required to create python package
 - `_config.yml` required for JupyterBook
 - `conf.py` required for JupyterBook
 - `_toc.yml` is the table of contents for JupyterBook
@@ -56,5 +63,7 @@ Run `make env` to setup the conda environment and install the required dependenc
 - `html-hub` build the JupyterBook so that you can view it on the hub with the URL proxy trick: https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html
 - `clean` clean up the generated figures, data, and _build folders.
 - `all` run all the notebooks (`*.ipynb` in `notebooks/` and `main.ipynb`)
+
+
 
 
