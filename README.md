@@ -1,7 +1,6 @@
 # Predicting Diabetes
 
-[![Binder][(https://mybinder.org/v2/gh/UCB-stat-159-s23/project-group25/HEAD?labpath=notebooks%2Fmain)]
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-s23/project-group25/HEAD?labpath=notebooks%2Fmain)
 All the content in this repository is available as a static website [here](https://ucb-stat-159-s23.github.io/project-group25/)
 
 Authors: Sam Tan, Bruce Xu, Duy Anh, Donghoon Shin
