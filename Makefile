@@ -9,7 +9,7 @@ CONDA_ENV_NAME = diabetes_analysis
 # install the environment
 .PHONY: env
 env:
-	source /srv/conda/etc/profile.d/conda.sh
+	source /srv/conda/etc/profile.d/conda.sh # configure shell to use 'conda activate'. 
 	conda env create -f environment.yml -p ~/envs/$(CONDA_ENV_NAME)
 	conda activate $(CONDA_ENV_NAME)
 	python -m ipykernel install --user --name $(CONDA_ENV_NAME) --display-name "$(CONDA_ENV_NAME)"
