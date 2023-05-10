@@ -1,13 +1,14 @@
 # Predicting Diabetes
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-s23/project-group25/HEAD?labpath=notebooks%2Fmain)
+
 All the content in this repository is available as a static website [here](https://ucb-stat-159-s23.github.io/project-group25/)
 
 Authors: Sam Tan, Bruce Xu, Duy Anh, Donghoon Shin
 
 ## Introduction
 
-This project aims to understand the predictive factors for becoming diabadic. The raw dataset can be downloaded here from[Kaggle](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset)
+This project aims to understand the predictive factors for becoming diabadic. The raw dataset can be downloaded here from [Kaggle](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset)
 
 We compared the performance of different models to predict if a person developed diabetes. Specifically, we compared the performance of OLS,  Decision Tree, Random Forest Classification and K Nearest Neighbor (KNN) model, and we found that the Random Forest model has the highest accuracy, 0.866. The KNN model generated a very low accuracy compared to other three classification models. However, It only achieved an accuracy of 0.837 in on the test set. 
 
@@ -18,7 +19,9 @@ TODO: explain the "balance" and "Analysis of weights to get intuition" section.
 
 ## Installation
 
-Run `make env` will setup a new conda environment with the name with the required dependencies. The new environment is called `diabetes_analysis`. To install the tailor-made functions specific to this project, please install the package `diabetes_analysis_tools` using  `pip install diabetes_analysis_pkg/.`. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
+Run `make env` will setup a new conda environment with the required dependencies. The activate the environment, run `conda activate diabetes_analysis`. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
+
+To install the tailor-made functions specific to this project, please install the package `diabetes_analysis_tools` by running  `pip install -e diabetes_analysis_pkg/.` after setting the wording directory to this repository. IMPORTANT: Please restart the kernel after the installation. The running kernel doesn't continuously check for changes in the installed packages. 
 
 ## Repository Structure
 
