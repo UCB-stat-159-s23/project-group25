@@ -17,8 +17,8 @@ env:
 # run all the notebooks
 .PHONY: all
 all: 
-	jupyter execute codes/EDA.ipynb --kernel_name=$(CONDA_ENV_NAME)   
-	jupyter execute codes/main.ipynb --kernel_name=$(CONDA_ENV_NAME)
+	jupyter execute notebooks/EDA.ipynb --kernel_name=$(CONDA_ENV_NAME)   
+	jupyter execute notebooks/main.ipynb --kernel_name=$(CONDA_ENV_NAME)
 
 # remove the environment
 .PHONY: remove-env
