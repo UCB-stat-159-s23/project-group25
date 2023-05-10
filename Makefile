@@ -4,15 +4,15 @@
 SHELL = /bin/bash
 
 # Name of the conda environment
-CONDA_ENV_NAME = project-group25
+CONDA_ENV_NAME = diabetes_analysis
 
 # install the environment
 .PHONY: env
 env:
 	source /srv/conda/etc/profile.d/conda.sh
-	mamba env create -f environment.yml -p ~/envs/$(CONDA_ENV_NAME)
+	conda create --name $(CONDA_ENV_NAME) python=3.10
 	conda activate $(CONDA_ENV_NAME)
-	conda install ipykernel
+	mamba env create -f environment.yml -p ~/envs/$(CONDA_ENV_NAME)
 	python -m ipykernel install --user --name $(CONDA_ENV_NAME) --display-name "$(CONDA_ENV_NAME)"
 
 # run all the notebooks
