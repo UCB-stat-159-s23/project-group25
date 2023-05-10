@@ -18,7 +18,7 @@ TODO: explain the "balance" and "Analysis of weights to get intuition" section.
 
 ## Installation
 
-Run `make env` to setup the conda environment and install the required dependencies. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
+Run `make env` will setup a new conda environment with the name with the required dependencies. To activate?? To install the tailor-made functions spcific to this project, please install the package `diabetes_analysis_tools` using  `pip install diabetes_analysis_pkg/.` after from this diirectory. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
 
 ## Repository Structure
 
@@ -37,9 +37,9 @@ Run `make env` to setup the conda environment and install the required dependenc
   - `EDA.ipynb` conducts data visualization 
 - `diabetes_analysis_pkg` contains the package, which has all the tailor-made functions for this project
   - `diabetes_analysis_tools` is the name of the package
-   -  `functions.py` contains the functions
+   -  `functions.py` contains the functions (TODO)
     - `tests/` is the folder for the tests for the functions
-     -  `tests_functions.py` for testing the function
+     -  `tests_functions.py` for testing the function (TODO)
   - `setup.py` required to create python package
   - `pyproj.tml` required to create python package
   - `setup.cfg` required to create python package
