@@ -18,7 +18,7 @@ TODO: explain the "balance" and "Analysis of weights to get intuition" section.
 
 ## Installation
 
-Run `make env` will setup a new conda environment with the name with the required dependencies. To activate?? To install the tailor-made functions spcific to this project, please install the package `diabetes_analysis_tools` using  `pip install diabetes_analysis_pkg/.` after from this diirectory. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
+Run `make env` will setup a new conda environment with the name with the required dependencies. The new environment is called `diabetes_analysis`. To install the tailor-made functions specific to this project, please install the package `diabetes_analysis_tools` using  `pip install diabetes_analysis_pkg/.`. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
 
 ## Repository Structure
 
