@@ -10,9 +10,8 @@ CONDA_ENV_NAME = diabetes_analysis
 .PHONY: env
 env:
 	source /srv/conda/etc/profile.d/conda.sh
-	conda create --name $(CONDA_ENV_NAME) python=3.10
+	conda env create -f environment.yml -p ~/envs/$(CONDA_ENV_NAME)
 	conda activate $(CONDA_ENV_NAME)
-	mamba env create -f environment.yml -p ~/envs/$(CONDA_ENV_NAME)
 	python -m ipykernel install --user --name $(CONDA_ENV_NAME) --display-name "$(CONDA_ENV_NAME)"
 
 # run all the notebooks
