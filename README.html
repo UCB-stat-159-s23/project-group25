@@ -382,7 +382,6 @@ document.write(`
 <p>This project aims to understand the predictive factors for becoming diabadic. The raw dataset can be downloaded here from <a class="reference external" href="https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset">Kaggle</a></p>
 <p>We compared the performance of different models to predict if a person developed diabetes. Specifically, we compared the performance of OLS,  Decision Tree, Random Forest Classification and K Nearest Neighbor (KNN) model, and we found that the Random Forest model has the highest accuracy, 0.866. The KNN model generated a very low accuracy compared to other three classification models. However, It only achieved an accuracy of 0.837 in on the test set.</p>
 <p>Since the Random Forest model gave the highest accuracy, we decide to further investigate the random forest model and try to optimize the accuracy of the random forest model. We attemped dropping duplicated records, but it didn’t improve testing accuracy. This is reasonable because the duplicated data appeared in the original dataset was not manually added by mistake. Instead, if duplicated data appeared, it means this specific “pattern of data” just appear more frequently than other records in the dataset. We can just return to our original dataset and try another way of optimizing the model.</p>
-<p>TODO: explain the “balance” and “Analysis of weights to get intuition” section.</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
@@ -394,29 +393,26 @@ document.write(`
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data/</span></code> contains different datasets in csv formats</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_012_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_5050split_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_health_indicators_BRFSS2015.csv</span></code> is XXX</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">clean.csv</span></code> is the cleaned version of <code class="docutils literal notranslate"><span class="pre">raw_data.csv</span></code> (TODO)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">train.csv</span></code> is the training dataset (TODO)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">val.csv</span></code> is the validation dataset (TODO)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">test.csv</span></code> is the testing dataset (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_012_health_indicators_BRFSS2015.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_5050split_health_indicators_BRFSS2015.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diabetes_binary_health_indicators_BRFSS2015.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean.csv</span></code> is the cleaned version of <code class="docutils literal notranslate"><span class="pre">raw_data.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xtrain.csv</span></code> is the training dataset with features</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ytrain.csv</span></code> is the training dataset with labels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xtest.csv</span></code> is the testing dataset with features</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ytest.csv</span></code> is the testing dataset with labels</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">figures/</span></code> contains generated figures from running the notebooks in <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code> (TODO)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">figures/</span></code> contains generated figures from running the notebooks in <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">notebooks/</span></code> contains the jupyter notebooks for data analysis</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> summarizes and discusses the findings and outcomes of our analysis</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cleaning.ipynb</span></code> prepares the data for later analysis (TODO)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EDA.ipynb</span></code> conducts data visualization</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDA.ipynb</span></code> conducts exploratory data analysis and data visualization</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">diabetes_analysis_pkg</span></code> contains the package, which has all the tailor-made functions for this project</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">diabetes_analysis_tools</span></code> is the name of the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">functions.py</span></code> contains the functions (TODO)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tests/</span></code> is the folder for the tests for the functions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tests_functions.py</span></code> for testing the function (TODO)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> required to create python package</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pyproj.tml</span></code> required to create python package</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> required to create python package</p></li>

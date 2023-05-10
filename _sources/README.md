@@ -14,8 +14,6 @@ We compared the performance of different models to predict if a person developed
 
 Since the Random Forest model gave the highest accuracy, we decide to further investigate the random forest model and try to optimize the accuracy of the random forest model. We attemped dropping duplicated records, but it didn't improve testing accuracy. This is reasonable because the duplicated data appeared in the original dataset was not manually added by mistake. Instead, if duplicated data appeared, it means this specific "pattern of data" just appear more frequently than other records in the dataset. We can just return to our original dataset and try another way of optimizing the model.
 
-TODO: explain the "balance" and "Analysis of weights to get intuition" section. 
-
 
 ## Installation
 
@@ -26,23 +24,20 @@ To install the tailor-made functions specific to this project, please install th
 ## Repository Structure
 
 - `data/` contains different datasets in csv formats
-  - `diabetes_012_health_indicators_BRFSS2015.csv` is XXX
-  - `diabetes_binary_5050split_health_indicators_BRFSS2015.csv` is XXX 
-  - `diabetes_binary_health_indicators_BRFSS2015.csv` is XXX
-  - `clean.csv` is the cleaned version of `raw_data.csv` (TODO)
-  - `train.csv` is the training dataset (TODO)
-  - `val.csv` is the validation dataset (TODO)
-  - `test.csv` is the testing dataset (TODO)
-- `figures/` contains generated figures from running the notebooks in `notebooks/` (TODO)
+  - `diabetes_012_health_indicators_BRFSS2015.csv`
+  - `diabetes_binary_5050split_health_indicators_BRFSS2015.csv`
+  - `diabetes_binary_health_indicators_BRFSS2015.csv`
+  - `clean.csv` is the cleaned version of `raw_data.csv`
+  - `xtrain.csv` is the training dataset with features
+  - `ytrain.csv` is the training dataset with labels
+  - `xtest.csv` is the testing dataset with features
+  - `ytest.csv` is the testing dataset with labels
+- `figures/` contains generated figures from running the notebooks in `notebooks/` 
 - `notebooks/` contains the jupyter notebooks for data analysis
   - `main.ipynb` summarizes and discusses the findings and outcomes of our analysis
-  - `cleaning.ipynb` prepares the data for later analysis (TODO)
-  - `EDA.ipynb` conducts data visualization 
+  - `EDA.ipynb` conducts exploratory data analysis and data visualization 
 - `diabetes_analysis_pkg` contains the package, which has all the tailor-made functions for this project
   - `diabetes_analysis_tools` is the name of the package
-   -  `functions.py` contains the functions (TODO)
-    - `tests/` is the folder for the tests for the functions
-     -  `tests_functions.py` for testing the function (TODO)
   - `setup.py` required to create python package
   - `pyproj.tml` required to create python package
   - `setup.cfg` required to create python package

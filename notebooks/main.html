@@ -452,12 +452,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jovyan/envs/project-group25/lib/python3.10/site-packages/statsmodels/compat/pandas.py:61: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
-  from pandas import Int64Index as NumericIndex
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -639,8 +633,8 @@ document.write(`
 Dep. Variable:        Diabetes_binary   R-squared:                       0.133
 Model:                            OLS   Adj. R-squared:                  0.133
 Method:                 Least Squares   F-statistic:                     5554.
-Date:                Mon, 08 May 2023   Prob (F-statistic):               0.00
-Time:                        07:42:39   Log-Likelihood:                -72849.
+Date:                Wed, 10 May 2023   Prob (F-statistic):               0.00
+Time:                        21:59:34   Log-Likelihood:                -72849.
 No. Observations:              253680   AIC:                         1.457e+05
 Df Residuals:                  253672   BIC:                         1.458e+05
 Df Model:                           7                                         
@@ -684,11 +678,15 @@ Notes:
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income Rating&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/figure5.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/bdae8f6b5f6c5c0fb24293b30fa4ade742c6ba0be7f9c7e5710a990f2feaeda0.png" src="../_images/bdae8f6b5f6c5c0fb24293b30fa4ade742c6ba0be7f9c7e5710a990f2feaeda0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <p>Looking at this histogram, the income are generally distributed towards the higher end which indicates that the dataset is sampling from a higher income class. Higher income generally leads to access to higher education with more resources to afford tutors, private schools, etc. These two variables may be correlated with each other.</p>
@@ -700,11 +698,15 @@ Notes:
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;BMI&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/figure6.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/869d8371d60066c2c8a526294b880a07a571eefe13dc7212bb05bb8af3e1a43d.png" src="../_images/869d8371d60066c2c8a526294b880a07a571eefe13dc7212bb05bb8af3e1a43d.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -870,11 +872,15 @@ Between 30 and 39.9 – This is described as obesity<br/>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt_model</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/figure7.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/5b7a5a9b544286652e76f387055695a0365e5320004b02f97a2195679ec91ab3.png" src="../_images/5b7a5a9b544286652e76f387055695a0365e5320004b02f97a2195679ec91ab3.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -939,6 +945,10 @@ Between 30 and 39.9 – This is described as obesity<br/>
 <span class="n">X</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">diabetes_binary_dataset</span><span class="p">[</span><span class="s1">&#39;Diabetes_binary&#39;</span><span class="p">]</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">159</span><span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/xtrain.csv&quot;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/xtest.csv&quot;</span><span class="p">)</span>
+<span class="n">y_train</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/ytrain.csv&quot;</span><span class="p">)</span>
+<span class="n">y_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/ytest.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1020,6 +1030,7 @@ testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
 </section>
 <section id="balance-data">
 <h3>Balance Data<a class="headerlink" href="#balance-data" title="Permalink to this heading">#</a></h3>
+<p>Balancing a dataset makes training a model easier because it helps prevent the model from becoming biassed towards one class. In other words, the model will no longer favour the majority class just because it contains more data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_binary_dataset</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/diabetes_binary_health_indicators_BRFSS2015.csv&quot;</span><span class="p">)</span>
@@ -1111,11 +1122,12 @@ testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
     <span class="n">axs</span><span class="p">[</span><span class="n">row_idx</span><span class="p">,</span> <span class="n">col_idx</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
     <span class="c1"># Add a title to each subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/figure8.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6284a237586f4c8630f77d9994a7a4b5a5aed7cc73dd15bd0ad270f764725faf.png" src="../_images/6284a237586f4c8630f77d9994a7a4b5a5aed7cc73dd15bd0ad270f764725faf.png" />
+<img alt="../_images/294affca3bef2b2da6d3195a680404775ca601dd7276af66b756f9c9d285f4cf.png" src="../_images/294affca3bef2b2da6d3195a680404775ca601dd7276af66b756f9c9d285f4cf.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1142,6 +1154,7 @@ testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Weights&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/figure9.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1149,7 +1162,10 @@ testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.87
 </pre></div>
 </div>
-<img alt="../_images/4440d427c10a5e15fd62773ce0f5840ad4b47dea004158a19d0a8ce89a21584f.png" src="../_images/4440d427c10a5e15fd62773ce0f5840ad4b47dea004158a19d0a8ce89a21584f.png" />
+<img alt="../_images/182b9e450e5f1218c1b38d471800ba988f7e0ce200859f86ab74e5bbdf007713.png" src="../_images/182b9e450e5f1218c1b38d471800ba988f7e0ce200859f86ab74e5bbdf007713.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <p>The logistic regression analysis revealed that the top 5 highest positive weights in predicting diabetes are GenHlth (1 = excellent, 2 = very good, 3 = good, 4 = fair, 5 = poor), BMI, Age, HighBP, and HighChol. These findings align with our prior knowledge that these features are highly associated with the development of diabetes. Conversely, the top 5 negative weights are HvyAlcoholConsumption, income, PhysHlth, Education, and MentHlth. With the exception of HvyAlcoholConsumption, this negative correlation is also in line with our intuition that these features are generally negatively associated with the development of diabetes. Notably, the strong negative correlation with HvyAlcoholConsumption is an interesting finding, and suggests that people without diabetes may be more likely to engage in heavy alcohol consumption.</p>
@@ -1161,7 +1177,7 @@ testing accuracy: 0.8544503758579366, rmse: 0.3815096645460812
 <section id="bruce">
 <h2>Bruce:<a class="headerlink" href="#bruce" title="Permalink to this heading">#</a></h2>
 <p>I completed EDA for the binary diabetes dataset. I did some data cleaning work, dropped duplicated data, and created several visualizations to help the audience get a better understanding of the dataset.
-I worked on the section of generating different classification models on the binary dataset. I compared their accuracies and conducted optimization on the random forest model.</p>
+I worked on the section of generating different classification models on the binary dataset. I compared their accuracies and conducted optimization on the random forest model and reorganized our repo structure to separate data, figures, notebooks, etc.</p>
 </section>
 <section id="duy">
 <h2>Duy:<a class="headerlink" href="#duy" title="Permalink to this heading">#</a></h2>
@@ -1169,11 +1185,11 @@ I worked on the section of generating different classification models on the bin
 </section>
 <section id="sam-tan">
 <h2>Sam Tan:<a class="headerlink" href="#sam-tan" title="Permalink to this heading">#</a></h2>
-<p>I made our work visable by publishing it online as a jupyterbook, with the help of a github workflow.
-Create Make Commands.</p>
+<p>I made our work visable by publishing it online as a jupyterbook, with the help of a github workflow; Compose the README file with detailed descriptions of the project and the structure of the repository; Create the package; Improve Makefile commands based on Donghoon’s work so the environment could be installed in one line; Update the Environment.yml with the correct verison for numpy.</p>
 </section>
 <section id="donghoon-shin">
 <h2>Donghoon Shin:<a class="headerlink" href="#donghoon-shin" title="Permalink to this heading">#</a></h2>
+<p>I made our codebase reproducible by making environment.yml with makefile that creates conda environment and ipykernal. Also, I added scientific analysis of which features predict diabetes with logistic regression analysis.</p>
 <p>I made our codebase reproducible by making environment.yml with makefile that creates conda environment and ipykernal. Also, I added scientific analysis of which features predict diabetes with logistic regression analysis.</p>
 </section>
 <div class="toctree-wrapper compound">
