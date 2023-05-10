@@ -32,9 +32,9 @@ Run `make env` to setup the conda environment and install the required dependenc
   - `val.csv` is the validation dataset (TODO)
   - `test.csv` is the testing dataset (TODO)
 - `figures/` contains generated figures from running the notebooks in `codes/` (TODO)
-- `codes/` contains the jupyter notebooks for data analysis
+- `notebooks/` contains the jupyter notebooks for data analysis
   - `main.ipynb` summarizes and discusses the findings and outcomes of our analysis
-  - `Cleaning.ipynb` prepares the data for later analysis (TODO)
+  - `cleaning.ipynb` prepares the data for later analysis (TODO)
   - `EDA.ipynb` conducts data visualization 
 
 - `_config.yml` required for JupyterBook
