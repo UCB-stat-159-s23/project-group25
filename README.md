@@ -1,7 +1,6 @@
 # Predicting Diabetes
 
-[![Binder](https://mybinder.org)
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-s23/project-group25/HEAD?labpath=notebooks%2Fmain)
 All the content in this repository is available as a static website [here](https://ucb-stat-159-s23.github.io/project-group25/)
 
 Authors: Sam Tan, Bruce Xu, Duy Anh, Donghoon Shin
@@ -31,7 +30,7 @@ Run `make env` to setup the conda environment and install the required dependenc
   - `train.csv` is the training dataset (TODO)
   - `val.csv` is the validation dataset (TODO)
   - `test.csv` is the testing dataset (TODO)
-- `figures/` contains generated figures from running the notebooks in `codes/` (TODO)
+- `figures/` contains generated figures from running the notebooks in `notebooks/` (TODO)
 - `notebooks/` contains the jupyter notebooks for data analysis
   - `main.ipynb` summarizes and discusses the findings and outcomes of our analysis
   - `cleaning.ipynb` prepares the data for later analysis (TODO)
@@ -56,6 +55,6 @@ Run `make env` to setup the conda environment and install the required dependenc
 - `html` build the JupyterBook normally
 - `html-hub` build the JupyterBook so that you can view it on the hub with the URL proxy trick: https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html
 - `clean` clean up the generated figures, data, and _build folders.
-- `all` run all the notebooks (`*.ipynb` in `codes/` and `main.ipynb`)
+- `all` run all the notebooks (`*.ipynb` in `notebooks/` and `main.ipynb`)
 
 
