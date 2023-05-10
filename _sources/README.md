@@ -63,7 +63,7 @@ To install the tailor-made functions specific to this project, please install th
 - `update-env` update the environment
 - `html` build the JupyterBook normally
 - `html-hub` build the JupyterBook so that you can view it on the hub with the URL proxy trick: https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html
-- `clean` clean up the generated figures, data, and _build folders.
+- `clean` clean up the generated figures, and _build folders.
 - `all` run all the notebooks (`*.ipynb` in `notebooks/` and `main.ipynb`)
 
 
