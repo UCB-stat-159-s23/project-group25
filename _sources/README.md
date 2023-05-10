@@ -51,7 +51,6 @@ Run `make env` will setup a new conda environment with the name with the require
 - `Makefile` make commands for easy execution
 - `LICENSE` contains the license used by the repo
 - `README.md` current document
-- `hw07-description.ipynb` Stat 159 assignment desctiption
 
 ## Makefile Commands
 
