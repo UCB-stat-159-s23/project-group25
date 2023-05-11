@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Diabetes Dataset EDA" href="EDA.html" />
+    <link rel="prev" title="Predicting Diabetes" href="../README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,7 +137,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../README.html">
   
   
   
@@ -155,13 +156,15 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
-                    Stat 159 Final Project: Diabetes
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Predicting Diabetes
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Stat 159 Final Project: Diabetes</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="EDA.html">Diabetes Dataset EDA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project-description.html">Final Project: original data analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribution_statement.html">Author Contributions Statement</a></li>
@@ -839,22 +842,6 @@ Between 30 and 39.9 – This is described as obesity<br/>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model training and prediction</span>
-<span class="kn">from</span> <span class="nn">diabetes</span><span class="o">-</span><span class="n">analysis</span><span class="o">-</span><span class="n">pkg</span><span class="o">-</span><span class="mf">0.0.1</span><span class="o">.</span><span class="n">diabetes_analysis_tools</span> <span class="kn">import</span>  <span class="nn">logistic_pred</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-    <span class="kn">from</span> <span class="nn">diabetes</span><span class="o">-</span><span class="n">analysis</span><span class="o">-</span><span class="n">pkg</span><span class="o">-</span><span class="mf">0.0.1</span><span class="o">.</span><span class="n">diabetes_analysis_tools</span> <span class="kn">import</span>  <span class="nn">logistic_pred</span>
-                 <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model accuracy evaluation</span>
 <span class="n">dt_model_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dt_model_pred</span><span class="p">)</span>
 <span class="n">dt_model_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dt_model_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
@@ -1194,8 +1181,6 @@ I worked on the section of generating different classification models on the bin
 <p>I made our codebase reproducible by making environment.yml with makefile that creates conda environment and ipykernal. Also, I added scientific analysis of which features predict diabetes with logistic regression analysis.</p>
 <p>I made our codebase reproducible by making environment.yml with makefile that creates conda environment and ipykernal. Also, I added scientific analysis of which features predict diabetes with logistic regression analysis.</p>
 </section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1207,16 +1192,16 @@ I worked on the section of generating different classification models on the bin
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "diabetes_analysis"
+            mode: "python"
         },
         kernelOptions: {
-            name: "diabetes_analysis",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'diabetes_analysis'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -1229,6 +1214,15 @@ I worked on the section of generating different classification models on the bin
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Predicting Diabetes</p>
+      </div>
+    </a>
     <a class="right-next"
        href="EDA.html"
        title="next page">
