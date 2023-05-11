@@ -8,18 +8,18 @@ Authors: Sam Tan, Bruce Xu, Duy Anh Dang, Donghoon Shin
 
 ## Introduction
 
-This project aims to understand the predictive factors for becoming diabadic. The raw dataset can be downloaded here from [Kaggle](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset)
+This project is dedicated to identifying predictive factors for the development of diabetes. The raw dataset is accessible on [Kaggle] (https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset).
 
-We compared the performance of different models to predict if a person developed diabetes. Specifically, we compared the performance of OLS,  Decision Tree, Random Forest Classification and K Nearest Neighbor (KNN) model, and we found that the Random Forest model has the highest accuracy, 0.866. The KNN model generated a very low accuracy compared to other three classification models. However, It only achieved an accuracy of 0.837 in on the test set. 
+We evaluated the performance of several models, including OLS, Decision Tree, Random Forest Classification, and K Nearest Neighbor (KNN), to predict whether an individual would develop diabetes. Our findings showed that the Random Forest model provided the highest accuracy, at 0.866. The KNN model, in contrast, demonstrated notably lower accuracy than the other three classification models, reaching only an accuracy of 0.837 on the test set.
 
-Since the Random Forest model gave the highest accuracy, we decide to further investigate the random forest model and try to optimize the accuracy of the random forest model. We attemped dropping duplicated records, but it didn't improve testing accuracy. This is reasonable because the duplicated data appeared in the original dataset was not manually added by mistake. Instead, if duplicated data appeared, it means this specific "pattern of data" just appear more frequently than other records in the dataset. We can just return to our original dataset and try another way of optimizing the model.
+Given its superior performance, we decided to delve deeper into the Random Forest model in an attempt to optimize its accuracy. We explored the impact of removing duplicate records but found that this didn't enhance test accuracy. This finding aligns with our expectation, as the presence of duplicate data in the original dataset was not due to manual errors. Rather, repeated patterns of data indicated that certain records appeared more frequently in the dataset. 
 
+Installation Instructions
 
-## Installation
+To set up a new conda environment with the necessary dependencies, run make env. Activate the environment with conda activate diabetes_analysis. Use the diabetes-analysis kernel to run the Jupyter Notebook.
 
-Run `make env` will setup a new conda environment with the required dependencies. The activate the environment, run `conda activate diabetes_analysis`. Use `diabetes-analysis` kernel to execute the Jupyter Notebook. 
+To utilize the custom functions designed specifically for this project, you'll need to install the diabetes_analysis_tools package. After setting the working directory to this repository using cd .., run pip install -e diabetes_analysis_pkg/. Note: please restart the kernel after installation. This is because the running kernel does not continuously monitor changes in the installed packages.
 
-To install the tailor-made functions specific to this project, please install the package `diabetes_analysis_tools` by running  `pip install -e diabetes_analysis_pkg/.` after setting the wording directory to this repository. IMPORTANT: Please restart the kernel after the installation. The running kernel doesn't continuously check for changes in the installed packages. 
 
 ## Repository Structure
 
@@ -58,7 +58,7 @@ To install the tailor-made functions specific to this project, please install th
 - `update-env` update the environment
 - `html` build the JupyterBook normally
 - `html-hub` build the JupyterBook so that you can view it on the hub with the URL proxy trick: https://stat159.datahub.berkeley.edu/user-redirect/proxy/8000/index.html
-- `clean` clean up the generated figures, and _build folders.
+- `clean` clean up the generated figures and _build folders.
 - `all` run all the notebooks (`*.ipynb` in `notebooks/` and `main.ipynb`)
 
 
