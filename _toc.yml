@@ -1,6 +1,7 @@
 format: jb-book
-root: notebooks/main
+root: README.md
 chapters:
+- file: notebooks/main
 - file: notebooks/EDA
 - file: project-description
 - file: contribution_statement

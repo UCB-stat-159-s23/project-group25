@@ -4,7 +4,7 @@
 SHELL = /bin/bash
 
 # Name of the conda environment
-CONDA_ENV_NAME = diabetes_analysis
+CONDA_ENV_NAME = diabetes_analysis2
 
 # install the environment
 .PHONY: env
@@ -23,6 +23,7 @@ all:
 # remove the environment
 .PHONY: remove-env
 remove-env:
+	source /srv/conda/etc/profile.d/conda.sh # configure shell to use 'conda activate'. 
 	conda deactivate 
 	mamba env remove -n $(CONDA_ENV_NAME)
 
