@@ -27,7 +27,7 @@ To utilize the custom functions designed specifically for this project, you'll n
   - `diabetes_012_health_indicators_BRFSS2015.csv`
   - `diabetes_binary_5050split_health_indicators_BRFSS2015.csv`
   - `diabetes_binary_health_indicators_BRFSS2015.csv`
-  - `clean.csv` is the cleaned version of `raw_data.csv`
+  - `clean.csv` is the cleaned version of the data ready for analysis. 
   - `xtrain.csv` is the training dataset with features
   - `ytrain.csv` is the training dataset with labels
   - `xtest.csv` is the testing dataset with features
