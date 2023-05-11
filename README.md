@@ -8,7 +8,7 @@ Authors: Sam Tan, Bruce Xu, Duy Anh Dang, Donghoon Shin
 
 ## Introduction
 
-This project is dedicated to identifying predictive factors for the development of diabetes. The raw dataset is accessible on [Kaggle] (https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset).
+This project is dedicated to identifying predictive factors for the development of diabetes. The raw dataset is accessible on [Kaggle](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset).
 
 We evaluated the performance of several models, including OLS, Decision Tree, Random Forest Classification, and K Nearest Neighbor (KNN), to predict whether an individual would develop diabetes. Our findings showed that the Random Forest model provided the highest accuracy, at 0.866. The KNN model, in contrast, demonstrated notably lower accuracy than the other three classification models, reaching only an accuracy of 0.837 on the test set.
 
