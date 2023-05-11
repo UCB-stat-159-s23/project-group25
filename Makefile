@@ -4,7 +4,7 @@
 SHELL = /bin/bash
 
 # Name of the conda environment
-CONDA_ENV_NAME = diabetes_analysis2
+CONDA_ENV_NAME = diabetes_analysis
 
 # install the environment
 .PHONY: env
